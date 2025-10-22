@@ -38,12 +38,12 @@ const OneMeniuPage = () => {
   const isAdmin = roles.includes('Admin');
 
   const { data: meniu, error: meniuError } = useSWR<MeniuDTO>(
-    `http://localhost:5071/api/menius/${id}`,
+    `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${id}`,
     fetcher
   );
 
   const { data: dishes, error: dishesError } = useSWR<DishDTO[]>(
-    id ? `http://localhost:5071/api/menius/${id}/dishes` : null,
+    id ? `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${id}/dishes` : null,
     fetcher
   );
 
@@ -55,7 +55,7 @@ const OneMeniuPage = () => {
     setLoadingDelete(true);
 
     try {
-      const res = await fetch(`http://localhost:5071/api/menius/${id}/dishes/${deleteDishId}`, {
+      const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${id}/dishes/${deleteDishId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

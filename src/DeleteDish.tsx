@@ -16,7 +16,7 @@ const DeleteMeniu = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:5071/api/menius/${id}`, {
+      const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });

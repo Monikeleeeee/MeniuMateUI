@@ -28,7 +28,7 @@ const DeleteComment = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}/comments/${commentId}`,
+        `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}/comments/${commentId}`,
         {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}` },

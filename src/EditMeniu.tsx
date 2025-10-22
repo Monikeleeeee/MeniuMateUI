@@ -29,7 +29,7 @@ const EditMeniu = () => {
   useEffect(() => {
     if (!id) return;
     setLoading(true);
-    fetch(`http://localhost:5071/api/menius/${id}`, {
+    fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${id}`, {
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     })
       .then(res => { if (!res.ok) throw new Error('Nepavyko gauti meniu'); return res.json(); })
@@ -52,7 +52,7 @@ const EditMeniu = () => {
 
     setSaving(true);
     try {
-      const res = await fetch(`http://localhost:5071/api/menius/${id}`, {
+      const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

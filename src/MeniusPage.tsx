@@ -21,7 +21,7 @@ const fetcher = async (url: string) => {
 
 const MeniusPage = () => {
   const navigate = useNavigate();
-  const { data: menius, error } = useSWR<MeniuDTO[]>('http://localhost:5071/api/menius', fetcher);
+  const { data: menius, error } = useSWR<MeniuDTO[]>('https://oyster-app-koqt5.ondigitalocean.app/api/menius', fetcher);
 
   const token = localStorage.getItem('accessToken');
   const roles = localStorage.getItem('roles')?.split(',') || [];
@@ -35,16 +35,16 @@ const MeniusPage = () => {
     setLoadingDelete(true);
 
     try {
-      const res = await fetch(`http://localhost:5071/api/menius/${deleteMeniuId}`, {
+      const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${deleteMeniuId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
 
       if (!res.ok) throw new Error('Nepavyko ištrinti meniu');
 
-      mutate('http://localhost:5071/api/menius', menius?.filter(m => m.id !== deleteMeniuId), false);
+      mutate('https://oyster-app-koqt5.ondigitalocean.app/api/menius', menius?.filter(m => m.id !== deleteMeniuId), false);
 
-      mutate('http://localhost:5071/api/menius');
+      mutate('https://oyster-app-koqt5.ondigitalocean.app/api/menius');
     } catch (err: any) {
       alert(err.message || 'Įvyko klaida.');
     } finally {

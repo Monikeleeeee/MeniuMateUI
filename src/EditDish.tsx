@@ -41,7 +41,7 @@ const EditDish = () => {
     const fetchDish = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}`
+          `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}`
         );
         if (!res.ok) throw new Error("Iškilo problema gaunant duomenis");
 
@@ -69,7 +69,7 @@ const EditDish = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}`,
+        `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}`,
         {
           method: "PUT",
           headers: {

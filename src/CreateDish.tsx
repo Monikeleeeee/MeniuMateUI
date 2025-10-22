@@ -37,7 +37,7 @@ const CreateDish = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:5071/api/menius/${meniuId}/dishes`, {
+      const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -46,7 +46,7 @@ const OneDishPage = () => {
   };
 
   const { data: dish, error: dishError } = useSWR<DishDTO>(
-    meniuId && dishId ? `http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}` : null,
+    meniuId && dishId ? `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}` : null,
     async (url:string) => {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Nepavyko gauti patiekalo iš duomenų bazės: ${res.statusText}`);
@@ -58,7 +58,7 @@ const OneDishPage = () => {
   );
 
   const { data: comments, error: commentsError, mutate } = useSWR<CommentDTO[]>(
-    meniuId && dishId ? `http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}/comments` : null,
+    meniuId && dishId ? `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}/comments` : null,
     (url:string) => fetch(url).then(res => res.json())
   );
 
@@ -82,7 +82,7 @@ const OneDishPage = () => {
     setLoadingDelete(true);
     try {
       const res = await fetch(
-        `http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}/comments/${deleteCommentId}`,
+        `https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}/comments/${deleteCommentId}`,
         { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } }
       );
       if (!res.ok) throw new Error('Nepavyko ištrinti komentaro.');

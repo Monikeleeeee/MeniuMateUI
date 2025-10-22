@@ -24,7 +24,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5071/api/login", {
+      const response = await fetch("https://oyster-app-koqt5.ondigitalocean.app/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName: username, password }),

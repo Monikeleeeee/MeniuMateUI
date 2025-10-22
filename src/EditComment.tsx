@@ -22,7 +22,7 @@ const EditComment = () => {
 
     const fetchComment = async () => {
       try {
-        const res = await fetch(`http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}/comments/${commentId}`, {
+        const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}/comments/${commentId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -49,7 +49,7 @@ const EditComment = () => {
     setError(null);
 
     try {
-      const res = await fetch(`http://localhost:5071/api/menius/${meniuId}/dishes/${dishId}/comments/${commentId}`, {
+      const res = await fetch(`https://oyster-app-koqt5.ondigitalocean.app/api/menius/${meniuId}/dishes/${dishId}/comments/${commentId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

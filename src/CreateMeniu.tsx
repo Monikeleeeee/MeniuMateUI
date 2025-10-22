@@ -32,7 +32,7 @@ const CreateMeniu = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5071/api/menius", {
+      const res = await fetch("https://oyster-app-koqt5.ondigitalocean.app/api/menius", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

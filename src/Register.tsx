@@ -17,7 +17,7 @@ const Register = () => {
     setError(null);
 
     try {
-      const registerRes = await fetch('http://localhost:5071/api/register', {
+      const registerRes = await fetch('https://oyster-app-koqt5.ondigitalocean.app/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ UserName: username, Email: email, Password: password }),
@@ -30,7 +30,7 @@ const Register = () => {
 
       console.log('✅ Prisiregistruota sėkmingai');
 
-      const loginRes = await fetch('http://localhost:5071/api/login', {
+      const loginRes = await fetch('https://oyster-app-koqt5.ondigitalocean.app/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ UserName: username, Password: password }),
@@ -46,7 +46,7 @@ const Register = () => {
       localStorage.setItem('accessToken', loginData.accessToken);
       localStorage.setItem('refreshToken', loginData.refreshToken);
       localStorage.setItem('username', username);
-      
+
       navigate('/');
     } catch (err: any) {
       setError(err.message || 'Kažkas įvyko ne taip');

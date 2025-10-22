@@ -13,7 +13,7 @@ const Swr = () => {
     data: groups,
     error,
     isValidating,
-  } = useSWR<GroupDTO[]>('http://localhost:5131/api/Group', fetcher);
+  } = useSWR<GroupDTO[]>('https://oyster-app-koqt5.ondigitalocean.app/', fetcher);
 
   if (error) return <div className="failed">Failed to load</div>;
   if (isValidating) return <div className="loading">Loading...</div>;
