@@ -17,13 +17,6 @@ const CreateComment = () => {
       navigate('/login');
       return;
     }
-
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-
-      const roles = payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-    } catch (err) {
-    }
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {

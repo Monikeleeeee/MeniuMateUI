@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Typography, Button, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import { useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
 
 const DeleteComment = () => {
   const { id: meniuId, dishId, commentId } = useParams<{ id: string; dishId: string; commentId: string }>();
@@ -9,18 +8,6 @@ const DeleteComment = () => {
   const token = localStorage.getItem('accessToken');
   const [loading, setLoading] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(true);
-
-  let userId: string | null = null;
-  let isAdmin = false;
-
-  if (token) {
-    try {
-      const decoded: any = jwtDecode(token);
-      userId = decoded.sub;
-      const roles: string[] = decoded.roles || [];
-      isAdmin = roles.includes('Admin');
-    } catch { }
-  }
 
   const handleDelete = async () => {
     if (!token || !meniuId || !dishId || !commentId) return;
