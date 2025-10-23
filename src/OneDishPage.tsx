@@ -112,7 +112,7 @@ const OneDishPage = () => {
 
         <Typography variant="h6" color="text.secondary" sx={{ mb: 2 }}>{dish.description}</Typography>
         <Typography variant="body1" sx={{ mb: 1 }}><strong>Sudėtis:</strong> {dish.ingredients}</Typography>
-        <Typography variant="h6" sx={{ mb: 3 }}><strong>Kaina:</strong> ${dish.price.toFixed(2)}</Typography>
+        <Typography variant="h6" sx={{ mb: 3 }}><strong>Kaina:</strong> {dish.price.toFixed(2)}</Typography>
 
         <Divider sx={{ my: 3 }} />
 

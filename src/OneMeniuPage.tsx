@@ -111,7 +111,7 @@ const OneMeniuPage = () => {
                 sx={{ textDecoration: 'none', color: 'inherit' }}
               >
                 <Typography variant="h6">{dish.name}</Typography>
-                <Typography variant="body2" color="text.secondary">${dish.price.toFixed(2)}</Typography>
+                <Typography variant="body2" color="text.secondary">{dish.price.toFixed(2)}</Typography>
               </CardContent>
 
               {isAdmin && (
