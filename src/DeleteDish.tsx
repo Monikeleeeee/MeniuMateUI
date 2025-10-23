@@ -23,7 +23,7 @@ const DeleteMeniu = () => {
 
       if (!res.ok) throw new Error('Nepavyko ištrinti meniu');
 
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (err: any) {
       alert(err.message || 'Įvyko klaida');
     } finally {
