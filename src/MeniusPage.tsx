@@ -1,5 +1,8 @@
 import useSWR, { mutate } from 'swr';
-import { Box, Card, CardContent, CircularProgress, Stack, Typography, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import {
+  Box, Card, CardContent, CircularProgress, Stack, Typography, Button,
+  Dialog, DialogTitle, DialogContent, DialogActions
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -26,6 +29,7 @@ const MeniusPage = () => {
   const token = localStorage.getItem('accessToken');
   const roles = localStorage.getItem('roles')?.split(',') || [];
   const isAdmin = roles.includes('Admin');
+  const isLoggedIn = Boolean(token);
 
   const [deleteMeniuId, setDeleteMeniuId] = useState<number | null>(null);
   const [loadingDelete, setLoadingDelete] = useState(false);
@@ -43,7 +47,6 @@ const MeniusPage = () => {
       if (!res.ok) throw new Error('Nepavyko ištrinti meniu');
 
       mutate('https://oyster-app-koqt5.ondigitalocean.app/api/menius', menius?.filter(m => m.id !== deleteMeniuId), false);
-
       mutate('https://oyster-app-koqt5.ondigitalocean.app/api/menius');
     } catch (err: any) {
       alert(err.message || 'Įvyko klaida.');
@@ -53,7 +56,7 @@ const MeniusPage = () => {
     }
   };
 
-  if (error) return <Typography color="error">Failed to load menu.</Typography>;
+  if (error) return <Typography color="error">Nepavyko įkelti meniu.</Typography>;
   if (!menius) return <CircularProgress />;
 
   return (
@@ -79,8 +82,19 @@ const MeniusPage = () => {
           <Card
             key={m.id}
             variant="outlined"
-            sx={{ cursor: 'pointer', '&:hover': isAdmin ? { boxShadow: 6, transform: 'scale(1.02)' } : {} }}
-            onClick={() => navigate(`/meniu/${m.id}`)}
+            sx={{
+              cursor: isLoggedIn ? 'pointer' : 'not-allowed',
+              opacity: isLoggedIn ? 1 : 0.6,
+              transition: 'all 0.2s',
+              '&:hover': isLoggedIn ? { boxShadow: 6, transform: 'scale(1.02)' } : {},
+            }}
+            onClick={() => {
+              if (!isLoggedIn) {
+                alert("Norėdami peržiūrėti meniu, turite prisijungti.");
+                return;
+              }
+              navigate(`/meniu/${m.id}`);
+            }}
           >
             <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <Typography variant="h6">{m.name}</Typography>
